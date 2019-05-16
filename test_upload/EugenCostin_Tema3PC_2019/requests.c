@@ -40,18 +40,17 @@ char *compute_get_request(char *host, char *url, char *url_params, char *token, 
         PAS 3 (optional): Adaugam headere si/ sau cookies, respectand forma protocolului
     */
 
-    if(token != NULL){
-        memset(line, 0, LINELEN);
-        sprintf(line, "Authorization: Basic %s", token);
-        compute_message(message, line);
-    }
+    memset(line, 0, LINELEN);
+    sprintf(line, "Authorization: Basic %s", token);
+    compute_message(message, line);
+    // TODO BONUS COOKIE
+    memset(line, 0, LINELEN);
+    sprintf(line, "Cookie: %s", cookie1);
+    compute_message(message, line);
 
-    if(cookie1 != NULL && cookie2 != NULL){
-        memset(line, 0, LINELEN);
-        sprintf(line, "Cookie: %s;%s", cookie1, cookie2);
-        compute_message(message, line);
-    }
-
+    memset(line, 0, LINELEN);
+    sprintf(line, "Cookie: %s", cookie2);
+    compute_message(message, line);
 
     /*
         PAS 4: Adaugam linia de final
@@ -60,7 +59,7 @@ char *compute_get_request(char *host, char *url, char *url_params, char *token, 
     strcat(message, "\r\n");
     return message;
 }
-char *compute_post_request(char *host, char *url, char *form_data,char *type, char *cookie1, char *cookie2, char *token)
+char *compute_post_request(char *host, char *url, char *form_data,char *type, char *cookie1, char *cookie2)
 {
 
     char *message = calloc(BUFLEN, sizeof(char));
@@ -84,6 +83,7 @@ char *compute_post_request(char *host, char *url, char *form_data,char *type, ch
         PAS 3: Adaugam headere si/ sau cookies, respectand forma protocolului
         ATENTIE!! Headerele Content-Type si Content-Length sunt obligatorii
     */
+
     memset(line, 0, LINELEN);
     sprintf(line, "Content-Type: %s", type);
     compute_message(message, line);
@@ -92,18 +92,9 @@ char *compute_post_request(char *host, char *url, char *form_data,char *type, ch
     sprintf(line, "Content-Length: %ld", strlen(form_data));
     compute_message(message, line);
 
-    if(token != NULL){
-        memset(line, 0, LINELEN);
-        sprintf(line, "Authorization: Basic %s", token);
-        compute_message(message, line);
-    }
-
-    if(cookie1 != NULL && cookie2 != NULL){
-        memset(line, 0, LINELEN);
-        sprintf(line, "Cookie: %s;%s", cookie1, cookie2);
-        compute_message(message, line);
-    }
-
+    memset(line, 0, LINELEN);
+    sprintf(line, "Cookie: %s;%s", cookie1, cookie2);
+    compute_message(message, line);
 
 
     /*

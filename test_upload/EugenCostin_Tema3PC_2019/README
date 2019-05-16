@@ -1,0 +1,44 @@
+Tema 3 - PROTOCOALE DE COMUNICATIE;
+
+Costin Eugen, Grupa 324CC;
+
+Dificultate: 5/10;
+
+Rating personal pentru tema: 8/10;
+
+Timp de lucru efectiv: 5 ore;
+
+Mare parte din implementarea temei a fost facuta in client.c, dar am facut si
+cateva modificari unor functii din requests.c;
+
+Task-ul 1:
+Am facut un get request pe ip-ul si port-ul scris in enunt, nimic complicat;
+
+Task-ul 2;
+Am parsat raspunsul de la server pentru a delimita headerul http de continut;
+Din header am extras cookie-urile cu operarii pe siruri, iar continutul
+a fost parsat cu ajutorul bibliotecii CJSON;
+Dupa ce am extras datele din continut, am facut o cerere de POST pentru
+a obtine enuntul urmatorului task. Cookie-urile, detaliile de logare, url-ul si
+tipul sunt transmise in functia compute_post_request;
+
+Task-ul 3:
+Operatiile facute sunt identice cu a doua cerinta, doar ca acum este vorba de o
+cerere de tip get, iar parametrii sunt raspunsurile la cele 2 ghicitori,
+si acel ID.
+De asemenea, in functia compute_post_request, trimitem ca parametru acel token,
+pe care il vom folosi si la celelalte task-uri.
+
+Task-ul 4:
+Cel mai usor task, trebuie doar sa trimitem cookie-urile in request;
+
+Nu am implementat task-ul 5, desi nu era complicat, dar am avut o gramada de
+alte teme si treburi.
+
+Per total mi-a placut mult tema, a fost data pentru a ridica punctajele,
+ceea ce este un lucru de apreciat din partea echipei de PC;
+Singurul "defect" al temei a fost, partial, enuntul, care desi este formulat
+coerent si usor de inteles, lasa niste goluri.
+Spre exemplu, in enunt nu scia nimic despre trimiterea cookie-urilor, si aici ma
+refer la formatul in care trebuiau trimise acestea.
+Dar nu a fost o problema, discutiile de pe forum au lamurit orice problema.

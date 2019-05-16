@@ -2,7 +2,7 @@
 #define _HELPERS_
 
 #define BUFLEN 4096
-#define LINELEN 1000
+#define LINELEN 100
 #define IP_SERVER "185.118.200.37"
 #define PORT_SERVER 8081
 
